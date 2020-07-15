@@ -1,0 +1,31 @@
+# 1.yaml 也是使用#注释
+# 2.每一个区域下的选项缩进要一致
+excel:
+  cases_path : 'CASES.xlsx'
+  result_col : 8
+  actual_col : 7
+msg:
+  success_result : success
+  fail_result : fail
+log:
+  log_name : cases
+  log_level : DEBUG
+  formatter : '%(asctime)s - [%(filename)s-->line:%(lineno)d] - %(levelname)s: %(message)s'
+  stream_level : DEBUG
+  logfile_name : test.log
+  log_file_level : DEBUG
+report:
+  name : report
+  title : "excellent report"
+  description : "last version report"
+  tester : "huliyuan"
+mysql:
+  host : 'api.lemonban.com'
+  user : 'future'
+  password : '123456'
+  db : 'futureloan'
+  port : 3306
+  select_user_sql : "SELECT * FROM member WHERE mobile_phone='%s';"
+api:
+  version : {"X-Lemonban-Media-Type": "lemonban.v2"}
+  profix : "http://api.lemonban.com/futureloan"
