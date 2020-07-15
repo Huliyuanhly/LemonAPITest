@@ -23,3 +23,4 @@ scripts
 脚本封装层，用于保存所有的操作封装模块（yaml,excel,log,mysql,requests,参数化等）
 run.py
 用例启动文件，使用套件加载用例，批量执行并生成报告
+....
