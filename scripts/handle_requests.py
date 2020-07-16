@@ -84,4 +84,3 @@ if __name__ == "__main__":
     # 5.执行充值
     recharge_res = do_request.send(recharge_url, data=recharge_params)
     pass
-

@@ -6,11 +6,10 @@ class Parameterize:
     '''
     参数化
     '''
-    not_existed_tel_pattern = r'{not_existed_tel}'
+    not_existed_tel_pattern = r'{not_existed_tel}'  # 设置为类属性
 
     @classmethod
     def to_param(cls, data):
-
         if re.search(cls.not_existed_tel_pattern, data):
             do_mysql = HandleMysql()
             data = re.sub(cls.not_existed_tel_pattern, do_mysql.create_not_existed_mobile(), data)
