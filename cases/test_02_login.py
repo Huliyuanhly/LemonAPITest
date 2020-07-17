@@ -1,4 +1,5 @@
 import unittest
+import json
 from scripts.handle_excel import HandleExcel
 from libs.ddt import ddt, data
 from scripts.handle_log import log
@@ -15,7 +16,7 @@ ddt 能够实现数据驱动，通过测试用例数据，自动生成用例
 
 @ddt
 class TestRegister(unittest.TestCase):
-    excel = HandleExcel('register')
+    excel = HandleExcel('login')
     cases = excel.read_data()
 
     @classmethod
@@ -28,7 +29,7 @@ class TestRegister(unittest.TestCase):
         cls.do_request.close()
 
     @data(*cases)
-    def test_case_method(self, case):
+    def test_case_method(self, case):  # 实例方法名不能跟模块名一致
         # 1.参数化
         new_data = Parameterize.to_param(case.data)
         # 2.拼接完整的URL
@@ -45,7 +46,7 @@ class TestRegister(unittest.TestCase):
         # 获取测试用例行号
         row = case.case_id + 1
         # 获取期望值
-        expected_results = case.excepted
+        expected_results = json.loads(case.expected, encoding="utf-8")
         msg = case.title  # 获取标题
         success_msg = do_yaml.read('msg', 'success_result')
         fail_msg = do_yaml.read('msg', 'fail_result')
@@ -53,6 +54,7 @@ class TestRegister(unittest.TestCase):
         try:
             # assertEqual 第一个参数为期望值，第二个参数为实际值，第三个参数为用例执行失败之后的提示信息
             self.assertEqual(expected_results, actual_value.get('code'), msg=msg)
+            self.assertEqual(expected_results.get('msg'), actual_value.get('msg'), msg=msg)
         except AssertionError as e:
             # 将响应实际值写入到actual列
             self.excel.write_data(row=row, column=do_yaml.read('excel', 'actual_col'),

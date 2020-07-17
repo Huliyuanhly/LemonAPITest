@@ -17,4 +17,8 @@ LOGS_DIR = os.path.join(BASE_DIR, 'logs')
 REPORTS_DIR = os.path.join(BASE_DIR, 'reports')
 # 获取Excel所在的目录路径
 DATAS_DIR = os.path.join(BASE_DIR, 'datas')
+# 获取用户信息配置的路径
+USER_ACCOUNT_FILE_PATH = os.path.join(CONFIGS_DIR, 'user_account.yaml')
+# 测试用例模块所在目录路径
+CASES_DIR = os.path.join(BASE_DIR, 'cases')
 pass

@@ -25,7 +25,8 @@ mysql:
   password : '123456'
   db : 'futureloan'
   port : 3306
-  select_user_sql : "SELECT * FROM member WHERE mobile_phone='%s';"
+  select_user_sql : "SELECT * FROM member WHERE mobile_phone=%s;"
+  select_user_id : "SELECT id FROM member WHERE mobile_phone=%s;"
 api:
   version : {"X-Lemonban-Media-Type": "lemonban.v2"}
   prefix : "http://api.lemonban.com/futureloan"
