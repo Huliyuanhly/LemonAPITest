@@ -11,6 +11,7 @@ class Parameterize:
     not_existed_tel_pattern = r'{not_existed_tel}'  # 设置为类属性
     invest_user_tel_pattern = r'{invest_user_tel}'
     invest_user_pwd_pattern = r'{invest_pwd_tel}'
+    invest_user_id_pattern = r'invest_user_id'  # 投资人的id
     do_user_account = HandleYaml(USER_ACCOUNT_FILE_PATH)
 
     @classmethod
@@ -30,6 +31,13 @@ class Parameterize:
         if re.search(cls.invest_user_pwd_pattern, data):
             invest_user_pwd = cls.do_user_account.read('invest', 'pwd')
             data = re.sub(cls.invest_user_tel_pattern, invest_user_pwd, data)
+
+        # 参数化投资人的id
+        if re.search(cls.invest_user_id_pattern, data):
+            invest_user_id = cls.do_user_account.read('invest', 'id')
+            data = re.sub(cls.invest_user_id_pattern, invest_user_id, data)
+        # 参数化不存在的id
+        # 作业 51课揭晓答案
 
         return data
 

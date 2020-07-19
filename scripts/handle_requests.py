@@ -13,7 +13,7 @@ class HandleRequest:
     def __init__(self):
         self.one_session = requests.Session()  # 创建会话对象，可以自动维护cookie
 
-    def add_headers(self, headers):
+    def add_headers(self,  headers):
         '''
         添加公共请求头
         :param headers:
